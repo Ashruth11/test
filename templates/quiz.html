@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz - EduAdapt</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Quiz</h1>
+    <form action="{{ url_for('submit_quiz') }}" method="POST">
+        {% for quiz in quizzes %}
+            <p>{{ quiz.question }}</p>
+            {% for option in quiz.options %}
+                <input type="radio" name="q{{ loop.index0 }}" value="{{ option }}"> {{ option }}<br>
+            {% endfor %}
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
